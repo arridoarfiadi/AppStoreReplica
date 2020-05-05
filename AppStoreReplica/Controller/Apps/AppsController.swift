@@ -125,8 +125,7 @@ class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
 	}
 	
 	private func presentDetail(for app: FeedResult) {
-		let vc = AppDetailController()
-		vc.appId = app.id
+		let vc = AppDetailController(appId: app.id)
 		navigationController?.pushViewController(vc, animated: true)
 	}
 	

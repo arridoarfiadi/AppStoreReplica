@@ -23,6 +23,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		collectionView.backgroundColor = .white
+		searchController.obscuresBackgroundDuringPresentation = false
 		collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: SearchResultCell.REUSE_ID)
 		view.addSubview(enterSearchTemLabel)
 		enterSearchTemLabel.fillSuperview()
@@ -82,5 +83,9 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
 		return CGSize(width: view.frame.width, height: 350)
 	}
 	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let appDetailController = AppDetailController(appId: "\(appResults[indexPath.row].trackId)")
+		navigationController?.pushViewController(appDetailController, animated: true)
+	}
 	
 }
