@@ -9,11 +9,16 @@
 import UIKit
 
 class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDelegateFlowLayout {
+	
+	let topBottomPadding: CGFloat = 12
+	let lineSpacing: CGFloat = 10
 	var appGroup: AppGroup? {
 		didSet {
 			collectionView.reloadData()
 		}
 	}
+	
+	var didSelectHandler: ((FeedResult) -> ())?
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		collectionView.backgroundColor = .white
@@ -38,8 +43,7 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
 		return cell
 	}
 	
-	let topBottomPadding: CGFloat = 12
-	let lineSpacing: CGFloat = 10
+
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let height = (view.frame.height - topBottomPadding - topBottomPadding - lineSpacing - lineSpacing) / 3
@@ -49,6 +53,11 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 		return lineSpacing
+	}
+	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard let app = appGroup?.feed.results[indexPath.row] else {return}
+		didSelectHandler?(app)
 	}
 	
 

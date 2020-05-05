@@ -109,6 +109,9 @@ class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
 		let appGroup = groups[indexPath.row]
 		cell.titleLabel.text = appGroup.feed.title
 		cell.horizontalController.appGroup = appGroup
+		cell.horizontalController.didSelectHandler = { [weak self] (app) in
+			self?.presentDetail(for: app)
+		}
 		return cell
 	}
 	
@@ -119,6 +122,11 @@ class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		return . init(top: 16, left: 0, bottom: 0, right: 0)
+	}
+	
+	private func presentDetail(for app: FeedResult) {
+		let vc = AppDetailController()
+		navigationController?.pushViewController(vc, animated: true)
 	}
 	
 }
