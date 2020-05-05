@@ -33,7 +33,6 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
 	fileprivate func setupSearchBar() {
 		navigationItem.searchController = searchController
 		navigationItem.hidesSearchBarWhenScrolling = false
-		searchController.dimsBackgroundDuringPresentation = false
 		searchController.searchBar.delegate = self
 	}
 	

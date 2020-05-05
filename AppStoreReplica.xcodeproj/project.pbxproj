@@ -33,6 +33,13 @@
 		C31CD42D245799B800D0337B /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CD42C245799B800D0337B /* SocialApp.swift */; };
 		C3E5C40A2460FA7E00048AA7 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C4092460FA7E00048AA7 /* HorizontalSnappingController.swift */; };
 		C3E5C40D246104DC00048AA7 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C40C246104DC00048AA7 /* AppDetailController.swift */; };
+		C3E5C410246205E300048AA7 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C40F246205E300048AA7 /* AppDetailCell.swift */; };
+		C3E5C41224620B1000048AA7 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C41124620B1000048AA7 /* PreviewCell.swift */; };
+		C3E5C41424620B3600048AA7 /* PreviewScreenshotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C41324620B3600048AA7 /* PreviewScreenshotsController.swift */; };
+		C3E5C416246215BE00048AA7 /* ReviewRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C415246215BE00048AA7 /* ReviewRowCell.swift */; };
+		C3E5C4182462160800048AA7 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C4172462160800048AA7 /* ReviewCell.swift */; };
+		C3E5C41A2462162700048AA7 /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C4192462162700048AA7 /* ReviewsController.swift */; };
+		C3E5C41C2462176A00048AA7 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C41B2462176A00048AA7 /* Reviews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +72,13 @@
 		C31CD42C245799B800D0337B /* SocialApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
 		C3E5C4092460FA7E00048AA7 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		C3E5C40C246104DC00048AA7 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
+		C3E5C40F246205E300048AA7 /* AppDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
+		C3E5C41124620B1000048AA7 /* PreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		C3E5C41324620B3600048AA7 /* PreviewScreenshotsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotsController.swift; sourceTree = "<group>"; };
+		C3E5C415246215BE00048AA7 /* ReviewRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowCell.swift; sourceTree = "<group>"; };
+		C3E5C4172462160800048AA7 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		C3E5C4192462162700048AA7 /* ReviewsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
+		C3E5C41B2462176A00048AA7 /* Reviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		EDDAC1F8A0D87C358779E424 /* Pods-AppStoreReplica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreReplica.release.xcconfig"; path = "Target Support Files/Pods-AppStoreReplica/Pods-AppStoreReplica.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +146,7 @@
 		C31CD406245673BD00D0337B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C3E5C40E246205E300048AA7 /* Details */,
 				C31CD41B2457899C00D0337B /* Search */,
 				C31CD41A2457899800D0337B /* Apps */,
 			);
@@ -154,6 +169,7 @@
 				C31CD42C245799B800D0337B /* SocialApp.swift */,
 				C31CD42A2457917800D0337B /* AppGroup.swift */,
 				C31CD40F2457823300D0337B /* SearchResult.swift */,
+				C3E5C41B2462176A00048AA7 /* Reviews.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,8 +223,21 @@
 			isa = PBXGroup;
 			children = (
 				C3E5C40C246104DC00048AA7 /* AppDetailController.swift */,
+				C3E5C41324620B3600048AA7 /* PreviewScreenshotsController.swift */,
+				C3E5C4192462162700048AA7 /* ReviewsController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		C3E5C40E246205E300048AA7 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				C3E5C41124620B1000048AA7 /* PreviewCell.swift */,
+				C3E5C40F246205E300048AA7 /* AppDetailCell.swift */,
+				C3E5C415246215BE00048AA7 /* ReviewRowCell.swift */,
+				C3E5C4172462160800048AA7 /* ReviewCell.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		DE352D63074EACA8E0A62CB5 /* Pods */ = {
@@ -351,12 +380,19 @@
 				C31CD3EE24566C2600D0337B /* AppDelegate.swift in Sources */,
 				C31CD405245672AA00D0337B /* AppsSearchController.swift in Sources */,
 				C31CD41D245789B300D0337B /* AppsGroupCell.swift in Sources */,
+				C3E5C416246215BE00048AA7 /* ReviewRowCell.swift in Sources */,
 				C3E5C40A2460FA7E00048AA7 /* HorizontalSnappingController.swift in Sources */,
+				C3E5C410246205E300048AA7 /* AppDetailCell.swift in Sources */,
 				C31CD408245673D500D0337B /* SearchResultCell.swift in Sources */,
+				C3E5C4182462160800048AA7 /* ReviewCell.swift in Sources */,
+				C3E5C41424620B3600048AA7 /* PreviewScreenshotsController.swift in Sources */,
 				C31CD40D245677A700D0337B /* VerticalStackView.swift in Sources */,
 				C31CD4292457903600D0337B /* AppsHeaderHorizontalController.swift in Sources */,
 				C31CD4132457823C00D0337B /* Service.swift in Sources */,
+				C3E5C41A2462162700048AA7 /* ReviewsController.swift in Sources */,
 				C31CD42624578FF400D0337B /* AppsPageHeader.swift in Sources */,
+				C3E5C41224620B1000048AA7 /* PreviewCell.swift in Sources */,
+				C3E5C41C2462176A00048AA7 /* Reviews.swift in Sources */,
 				C31CD40C245677A700D0337B /* UIView+Layout.swift in Sources */,
 				C31CD42324578EA800D0337B /* Extensions.swift in Sources */,
 				C31CD42B2457917800D0337B /* AppGroup.swift in Sources */,

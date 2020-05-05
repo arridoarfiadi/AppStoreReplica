@@ -21,7 +21,7 @@ class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
 	}
 	
 	let activityIndicatorView: UIActivityIndicatorView = {
-		let aiv = UIActivityIndicatorView(style: .whiteLarge)
+		let aiv = UIActivityIndicatorView(style: .large)
 		aiv.color = .black
 		aiv.startAnimating()
 		aiv.hidesWhenStopped = true
@@ -126,6 +126,7 @@ class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
 	
 	private func presentDetail(for app: FeedResult) {
 		let vc = AppDetailController()
+		vc.appId = app.id
 		navigationController?.pushViewController(vc, animated: true)
 	}
 	
