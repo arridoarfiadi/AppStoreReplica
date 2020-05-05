@@ -12,12 +12,12 @@ import UIKit
 class BaseTabBarController: UITabBarController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		let todayViewController = createNavController(viewController: UIViewController(), title: "Today", imageName: "today_icon")
+		let todayViewController = createNavController(viewController: TodayController(), title: "Today", imageName: "today_icon")
 		let appsViewController = createNavController(viewController: AppsController(), title: "Apps", imageName: "apps")
 		let searchViewController = createNavController(viewController: AppsSearchController(), title: "Search", imageName: "search")
 		viewControllers = [
-			appsViewController,
 			todayViewController,
+			appsViewController,
 			searchViewController
 			
 		]
