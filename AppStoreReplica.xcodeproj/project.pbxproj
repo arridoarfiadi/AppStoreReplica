@@ -35,6 +35,10 @@
 		C3BB078C246CBE7F0076FA30 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB0789246CBE7F0076FA30 /* AppFullscreenDescriptionCell.swift */; };
 		C3BB078D246CBE7F0076FA30 /* AppFullscreenHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB078A246CBE7F0076FA30 /* AppFullscreenHeaderCell.swift */; };
 		C3BB078E246CBE7F0076FA30 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB078B246CBE7F0076FA30 /* TodayCell.swift */; };
+		C3BB0790246CC1A00076FA30 /* TodayMultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB078F246CC1A00076FA30 /* TodayMultipleAppCell.swift */; };
+		C3BB0792246CC3740076FA30 /* TodayMultipleAppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB0791246CC3740076FA30 /* TodayMultipleAppsController.swift */; };
+		C3BB0794246CC3AD0076FA30 /* MultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB0793246CC3AD0076FA30 /* MultipleAppCell.swift */; };
+		C3BB0796246CC70C0076FA30 /* BackEnabledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB0795246CC70C0076FA30 /* BackEnabledNavigationController.swift */; };
 		C3E5C40A2460FA7E00048AA7 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C4092460FA7E00048AA7 /* HorizontalSnappingController.swift */; };
 		C3E5C40D246104DC00048AA7 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C40C246104DC00048AA7 /* AppDetailController.swift */; };
 		C3E5C410246205E300048AA7 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5C40F246205E300048AA7 /* AppDetailCell.swift */; };
@@ -80,6 +84,10 @@
 		C3BB0789246CBE7F0076FA30 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
 		C3BB078A246CBE7F0076FA30 /* AppFullscreenHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeaderCell.swift; sourceTree = "<group>"; };
 		C3BB078B246CBE7F0076FA30 /* TodayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
+		C3BB078F246CC1A00076FA30 /* TodayMultipleAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppCell.swift; sourceTree = "<group>"; };
+		C3BB0791246CC3740076FA30 /* TodayMultipleAppsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppsController.swift; sourceTree = "<group>"; };
+		C3BB0793246CC3AD0076FA30 /* MultipleAppCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleAppCell.swift; sourceTree = "<group>"; };
+		C3BB0795246CC70C0076FA30 /* BackEnabledNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackEnabledNavigationController.swift; sourceTree = "<group>"; };
 		C3E5C4092460FA7E00048AA7 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		C3E5C40C246104DC00048AA7 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
 		C3E5C40F246205E300048AA7 /* AppDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
@@ -165,6 +173,8 @@
 				C3E5C40E246205E300048AA7 /* Details */,
 				C31CD41B2457899C00D0337B /* Search */,
 				C31CD41A2457899800D0337B /* Apps */,
+				C3BB078F246CC1A00076FA30 /* TodayMultipleAppCell.swift */,
+				C3BB0793246CC3AD0076FA30 /* MultipleAppCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,8 +270,10 @@
 		C3E5C41D2462225500048AA7 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				C3BB0791246CC3740076FA30 /* TodayMultipleAppsController.swift */,
 				C3E5C4282462286500048AA7 /* AppFullscreenController.swift */,
 				C3E5C41F2462229F00048AA7 /* TodayController.swift */,
+				C3BB0795246CC70C0076FA30 /* BackEnabledNavigationController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -405,11 +417,13 @@
 				C31CD42724578FF400D0337B /* AppsHeaderCell.swift in Sources */,
 				C31CD3EE24566C2600D0337B /* AppDelegate.swift in Sources */,
 				C31CD405245672AA00D0337B /* AppsSearchController.swift in Sources */,
+				C3BB0794246CC3AD0076FA30 /* MultipleAppCell.swift in Sources */,
 				C31CD41D245789B300D0337B /* AppsGroupCell.swift in Sources */,
 				C3E5C416246215BE00048AA7 /* ReviewRowCell.swift in Sources */,
 				C3E5C40A2460FA7E00048AA7 /* HorizontalSnappingController.swift in Sources */,
 				C3BB078E246CBE7F0076FA30 /* TodayCell.swift in Sources */,
 				C3E5C410246205E300048AA7 /* AppDetailCell.swift in Sources */,
+				C3BB0792246CC3740076FA30 /* TodayMultipleAppsController.swift in Sources */,
 				C31CD408245673D500D0337B /* SearchResultCell.swift in Sources */,
 				C3E5C4292462286500048AA7 /* AppFullscreenController.swift in Sources */,
 				C3E5C4182462160800048AA7 /* ReviewCell.swift in Sources */,
@@ -419,6 +433,7 @@
 				C31CD4292457903600D0337B /* AppsHeaderHorizontalController.swift in Sources */,
 				C3BB078C246CBE7F0076FA30 /* AppFullscreenDescriptionCell.swift in Sources */,
 				C31CD4132457823C00D0337B /* Service.swift in Sources */,
+				C3BB0796246CC70C0076FA30 /* BackEnabledNavigationController.swift in Sources */,
 				C3E5C41A2462162700048AA7 /* ReviewsController.swift in Sources */,
 				C31CD42624578FF400D0337B /* AppsPageHeader.swift in Sources */,
 				C3E5C41224620B1000048AA7 /* PreviewCell.swift in Sources */,
@@ -433,6 +448,7 @@
 				C31CD3F024566C2600D0337B /* SceneDelegate.swift in Sources */,
 				C31CD41F24578B4C00D0337B /* AppsHorizontalController.swift in Sources */,
 				C31CD42124578DFF00D0337B /* AppRowCell.swift in Sources */,
+				C3BB0790246CC1A00076FA30 /* TodayMultipleAppCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

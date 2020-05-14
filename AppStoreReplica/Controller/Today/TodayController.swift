@@ -16,10 +16,55 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 	var leadingConstraint: NSLayoutConstraint?
 	var widthConstraint: NSLayoutConstraint?
 	var heightConstraint: NSLayoutConstraint?
-	let items = [
-		   TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white),
-		   TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1))
-	   ]
+	let activityIndicatorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView()
+        aiv.color = .darkGray
+        aiv.startAnimating()
+        aiv.hidesWhenStopped = true
+        return aiv
+    }()
+	var apps = [TodayItem]()
+	
+	fileprivate func fetchData() {
+        // dispatchGroup
+        self.activityIndicatorView.startAnimating()
+        let dispatchGroup = DispatchGroup()
+        
+        var topGrossingGroup: AppGroup?
+        var gamesGroup: AppGroup?
+        
+        dispatchGroup.enter()
+        Service.shared.fetchTopGrossing { (appGroup, err) in
+            // make sure to check your errors
+            topGrossingGroup = appGroup
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchGames { (appGroup, err) in
+            gamesGroup = appGroup
+            dispatchGroup.leave()
+        }
+        
+        // completion block
+        dispatchGroup.notify(queue: .main) {
+            // I'll have access to top grossing and games somehow
+            
+            print("Finished fetching")
+            self.activityIndicatorView.stopAnimating()
+            
+            self.apps = [
+                TodayItem.init(category: "Daily List", title: topGrossingGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
+                
+                TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
+                
+                TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single, apps: []),
+            ]
+            
+            self.collectionView.reloadData()
+        }
+        
+    }
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +74,28 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         collectionView.backgroundColor = #colorLiteral(red: 0.948936522, green: 0.9490727782, blue: 0.9489068389, alpha: 1)
         
 		collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayCell.reuseID)
+		collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayMultipleAppCell.reuseID)
+		view.addSubview(activityIndicatorView)
+			   activityIndicatorView.centerInSuperview()
+		fetchData()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		   super.viewWillAppear(animated)
+		   
+		   tabBarController?.tabBar.superview?.setNeedsLayout()
+	   }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+		if apps[indexPath.item].cellType == .multiple {
+				   let fullController = TodayMultipleAppsController(mode: .fullscreen)
+				   fullController.apps = self.apps[indexPath.item].apps
+				   present(BackEnabledNavigationController(rootViewController: fullController), animated: true)
+				   return
+			   }
+		
         let appFullscreenController = AppFullscreenController()
-        appFullscreenController.todayItem = items[indexPath.row]
+        appFullscreenController.todayItem = apps[indexPath.row]
         appFullscreenController.dismissHandler = {
             self.handleRemoveAppFullScreenControllerView()
         }
@@ -118,17 +179,19 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return items.count
+		return apps.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodayCell.reuseID, for: indexPath) as! TodayCell
-		cell.todayItem = items[indexPath.row]
+		let cellId = apps[indexPath.item].cellType == .single ? TodayCell.reuseID : TodayMultipleAppCell.reuseID
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
+        cell.todayItem = apps[indexPath.item]
         return cell
     }
-    
+     static let cellSize: CGFloat = 500
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width - 64, height: 450)
+        return .init(width: view.frame.width - 64, height: TodayController.cellSize)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
