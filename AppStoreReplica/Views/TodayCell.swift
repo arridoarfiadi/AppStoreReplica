@@ -31,9 +31,8 @@ class TodayCell: BaseTodayCell {
         super.init(frame: frame)
         
         backgroundColor = .white
-        clipsToBounds = true
         layer.cornerRadius = 16
-        
+		imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         
         let imageContainerView = UIView()
